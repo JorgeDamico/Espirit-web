@@ -1,0 +1,28 @@
+a{
+    list-style: none;
+    display: inline;
+    margin: 30px;
+    color: indigo;
+}
+footer{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid indigo;
+    background-color: floralwhite;
+}
+h2, h5{
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+h6{
+    padding-top: 30px;
+}
+h2{
+    font-family: 'Sevillana','Rouge Script';
+    color: midnightblue;
+    font-size: 27px;
+}
+#suscribirse{
+    font-size: 20px;
+    padding: 15px 0 15px 0;
+}

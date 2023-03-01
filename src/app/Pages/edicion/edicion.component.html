@@ -1,0 +1,118 @@
+<section class="row">
+    <div class="offcanvas offcanvas-end"  tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h3 id="offcanvasRightLabel">Seleccione el producto a modificar</h3>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body"  >
+            <div *ngFor="let producto of arrayProductos" >
+                <a routerLink="/edicion" (click)="seleccionarProducto(producto._id,producto.nombre,producto.precio,producto.cantidad,producto.stock,producto.descripcion,producto.categoria._id,producto.imagen)">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src={{producto.imagen}} class="img-fluid rounded-start" alt="Perfume">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h3 class="card-title">{{producto.nombre}}</h3>
+                            <p class="card-text">{{producto.precio | currency}}</p>
+                            <p class="card-text">Stock: {{producto.stock}}</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="col-lg-6 offset-sm-3 col-10 offset-1 mx-auto mb-4 mt-4 pb-3" id="formu">
+        <p class="text text-center mt-3 mb-2 p_titulo">Acciones sobre productos</p>
+        <button class="btn btn-outline-success m-4" type="button" (click)="nuevo()">Nuevo producto</button>
+        <button class="btn btn-outline-primary m-4" type="button" (click)="modificar()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Modificar / Eliminar</button>
+        
+        <form [formGroup]="myForm" (ngSubmit)="crearProducto()" [style.display] = "visible" >
+            <p class="p_titulo text text-center p-4">{{textBtn}} producto</p>
+            <div class="mb-3" [style.display] = "verID">
+                <label class="form-label" >ID</label>                    
+                <input  type="text" class="form-control" formControlName="id">      
+            </div>
+            <div class="mb-3" >
+                <label class="form-label" >Nombre</label>                    
+                <input  type="text" class="form-control" formControlName="nombre">      
+            </div>
+            <div class="mb-3">
+                <label class="form-label" >Precio</label>
+                <input  type="Number" class="form-control" formControlName="precio">       
+            </div>
+            <div class="mb-3">
+                <label class="form-label" >Cantidad</label>
+                <input  type="Number" class="form-control" placeholder="Expresada en volumen, peso o unidades" formControlName="cantidad">       
+            </div>
+            <div class="mb-3">
+                <label class="form-label" >Stock</label>
+                <input  type="Number" class="form-control" placeholder="Unidades" formControlName="stock">       
+            </div>
+            <div class="mb-3">
+                <label class="form-label" >Descripción</label>
+                <input  type="text" class="form-control" placeholder="Describa detalles del producto acá" formControlName="descripcion">       
+            </div>
+            <div class="mb-3">
+                <label class="form-label" >Categoría</label>
+                <select class="form-control" formControlName="categoria" id="" >
+                    <option value={{categoria._id}} *ngFor="let categoria of arrayCategorias">{{categoria.nombre}}</option>
+                </select>      
+            </div>
+            <div class="mb-3">
+                <label class="form-label" >Imagen</label>
+                <input  type="text" class="form-control" placeholder="Ingrese la url de alojamiento" formControlName="imagen">       
+            </div>
+            
+            <button id="btn_Enviar" type="submit" class="btn btn-outline-success" [disabled]="myForm.invalid">
+                {{textBtn}}
+            </button>
+            <button id="btn_Eliminar" (click)="eliminar()" [style.display] = "verID" type="button" class="btn btn-outline-danger mx-auto mt-4" [disabled]="myForm.invalid">
+                Eliminar producto
+            </button>
+            
+            <div id="err" *ngIf="myForm.get('nombre')?.errors && myForm.get('nombre')?.dirty">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                <p *ngIf="myForm.get('nombre')?.hasError('required')">No deje el nombre vacío</p>
+                <p *ngIf="myForm.get('nombre')?.hasError('minlength')">El nombre debe contener más de tres caracteres</p>
+            </div>
+    
+        </form>
+    </div>
+
+    <br/> 
+
+    <br/>
+    
+    <div class="col-lg-6 offset-sm-3 col-10 offset-1  mb-4 mt-4 pb-3" id="suscriptores">
+        <p class="text text-center mt-3 mb-2 p_titulo">Suscriptores <span style="font-size: 11px;" class="badge bg-success">{{cantidadSuscriptores}}</span></p>
+        <button class="btn btn-outline-success m-4" type="button" >Exportar</button>
+        <a routerLink="/edicion" (click)="refreshSuscriptores()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="orange" class="bi bi-recycle" viewBox="0 0 16 16">
+                <path d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"/>
+            </svg>
+        </a>           
+        <div class="col-12" id="scroller"><hr>
+            <ol class="list-group list-group-numbered" >
+                <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let suscriptor of arraySuscriptores">
+                    <div id="cortar" class="ms-2 me-auto">
+                        <p class="text">{{suscriptor.email}}  </p>   
+                    </div>
+                    <span class="badge bg-outline-secondary rounded-pill">
+                        <input type="button" (click)="eliminarSuscriptor(suscriptor._id)" class="text bg-outline-secondary" value="Eliminar" />
+                    </span>
+                </li>
+            </ol>
+        </div>
+    </div>    
+
+</section>

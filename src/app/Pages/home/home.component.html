@@ -1,0 +1,49 @@
+
+
+<section class="row" id="grupo">
+  <app-banner-principal></app-banner-principal>
+    <div id="opciones" class="col-sm-3">
+      
+    <div class="row mt-5" id="baseBanner">
+        <button class="btn btn-outline-info" (click)="filtrarTodos()">VER TODOS</button>
+        <div class="card-group justify-content-center">
+            <div class="card mx-auto mt-4 mb-4 text-white" style="max-width: 14rem; min-width: 14rem;">
+                <img src="/assets/imagenes/foto.jpg" class="card-img" alt="Femeninos">
+                <a href="#productos" (click)="filtrarMujer()"><div class="card-img-overlay">
+                    <h2 id="fem" class="card-title text-light">MUJER</h2>
+                </div></a>
+            </div>
+            <div class="card mx-auto mt-4 mb-4 text-white" style="max-width: 14rem; min-width: 14rem;">
+                <img src="/assets/imagenes/fotohombre.jpg" class="card-img" alt="Masculinos">
+                <a href="#productos" (click)="filtrarHombre()"><div class="card-img-overlay">
+                    <h2 id="masc" class="card-title text-dark">HOMBRE</h2>
+                </div></a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="col-sm-9" fragment="productos" id="productos">
+      
+    <div *ngIf="arrayProductos.length>0">
+        <div class="card-group" style="justify-content: center;">
+            <div *ngFor="let producto of arrayProductos" id="prod">
+                <div *ngIf="producto.stock > 0 && producto.categoria.nombre == catMujer || producto.categoria.nombre == catHombre">
+                <app-producto
+                  [data]="producto"
+                  (miEvento1)="agregar($event)"
+                ></app-producto>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <div *ngIf="arrayProductos.length<=0">
+          <div class="text-center">
+              <div class="spinner-border mt-4" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+          </div>
+      </div>
+    </div>
+</section>

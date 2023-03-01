@@ -1,0 +1,30 @@
+#imgPerf{
+  background-image: url("/assets/imagenes/perfumista.jpg");
+  background-size: cover;
+  min-height: 250px;
+}
+
+#imgLab{
+  background-image: url("https://freelabel.000webhostapp.com/imagenes/pexels-ron-lach-10187143.jpg");
+  background-size: cover;
+  min-height: 250px;
+}
+
+#txt{
+  color: rgba(0,0,0,.8);
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  line-height: 30px;
+}
+#hacemos{
+  color: rgba(0,0,0,.8);
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+  #espirit{
+    font-family: 'Sevillana';
+    font-size: 24px !important;
+  }
+  

@@ -1,0 +1,20 @@
+#formu{
+    padding: 20px;
+    margin: 30px 0 30px 0;
+}
+.p_titulo{
+    border-bottom: 1px solid indigo;
+    padding-bottom: 10px;
+    font-size: 26px;
+}
+label{
+    font-size: 16px;
+}
+#err{
+    background-color: rgba(65, 211, 255, 0.2);
+    border: 1px solid silver;
+    margin: 30px;
+    text-align: center;
+    border-radius: 20px;
+    padding: 2px;
+}

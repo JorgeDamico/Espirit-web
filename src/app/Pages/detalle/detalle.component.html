@@ -1,0 +1,23 @@
+
+<div id="tarjeta" class="card mb-3 text-center" *ngIf="product">
+    <img id="imagen" src={{product.imagen}} max-width="18rem" height="auto" class="card-img-top mt-3" alt={{product.nombre}}>
+    <div class="card-body">
+      <h3 class="card-title">{{product.nombre}} x {{product.cantidad}} ml</h3>
+      <p>{{product.categoria.nombre}}</p>
+      <p>{{product.descripcion}}</p>
+      <p>Disponibles: {{product.stock}}</p>
+      <h3 class="card-text">{{product.precio | currency}}</h3>
+      <p></p>
+      <a (click)="agregar()" routerLink="/carro" class="btn btn-outline-success m-2">Agregar al carro</a>
+    </div>
+</div>
+
+<div *ngIf="!product">
+  <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+  </div>
+</div>
+
+

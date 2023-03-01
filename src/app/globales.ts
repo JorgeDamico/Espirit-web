@@ -1,0 +1,1 @@
+export let cantidad = localStorage.getItem("carro")?.length;

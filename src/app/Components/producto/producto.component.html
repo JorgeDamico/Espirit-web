@@ -1,0 +1,11 @@
+
+<div class="card mx-auto m-sm-4 mb-4 text-center" style="max-width: 12rem; min-width: 10rem;" id="tarjeta">
+    <img src={{data.imagen}} class="card-img-top" alt={{data.nombre}}>
+    <div class="card-body" id="cardBody">
+        <h3 class="card-title pb-3">{{data.nombre}}</h3>
+        <hr style="border: 2px solid goldenrod;">
+        <p class="card-text">{{data.precio | currency}}</p>
+        <a routerLink="/producto/{{data._id}}" class="btn btn-outline-success m-2">Detalles</a>
+        <a (click)="emitir(data._id,data.nombre,data.precio,data.imagen)" class="btn btn-outline-secondary m-2">Agregar</a>
+    </div>
+</div>

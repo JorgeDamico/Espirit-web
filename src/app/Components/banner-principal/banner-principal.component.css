@@ -1,0 +1,19 @@
+
+#baseBanner{
+    background-image: url("/assets/imagenes/magnolia-trees-g46923d9bd_1280.jpg");
+    background-size: cover;
+    opacity: .6;
+}
+#texto{
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    line-height: 40px;
+}
+#adelante{
+    z-index: 10;
+}
+#marca{
+    font-family: 'Sevillana','Rouge Script';
+    font-size: 26px;
+}
+

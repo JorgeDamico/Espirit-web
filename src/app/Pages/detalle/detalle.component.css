@@ -1,0 +1,9 @@
+#imagen{
+    max-width: 18rem;
+    height: auto;
+    align-self: center;
+}
+#tarjeta{
+    margin: 20px 0 20px 0;
+    background-color: ghostwhite;
+}

@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Pushster';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/pushster/v12/BXRovFDanenCmllHXvt90Wo.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+header{
+    /*background-color: rgba(0,0,0,.7); */
+    background-image: url("src/assets/imagenes/rect4682.png");
+    background-size: cover;
+} 
+#marca{
+    padding: 90px 0 0px 0;
+    font-family: 'Sevillana','Rouge Script';/*  , 'Cookie' , 'Redressed' , 'Sacramento' , 'Tangerine' */
+    font-size: 66px;
+    color: rgb(255, 255, 255); /*  */
+}
+#perfumes{
+    font-size: 12px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    letter-spacing: 10px;
+    color: rgb(63, 0, 0);
+}
+#nav_1{
+    background-color: rgba(255, 241, 241, .9);
+    min-height: 70px;
+    border-bottom: 5px solid midnightblue;
+}
+.nav-link{
+    padding-left:  30px !important;
+    padding-right:  30px !important;
+    font-size: 16px;
+    color: midnightblue !important;
+}
+#barra_redes{
+    background-color: rgb(255, 176, 86);
+    max-height: 40px;
+    position: fixed;
+    z-index: 10;
+}
+#link_ingresar{
+    font-size: 16px;
+    color: white !important;
+}
+.nav-link:hover{
+    text-shadow: 3px 5px 7px grey;
+    font-size: 16.2px;
+}
+#nav_ingreso{
+    display: flex;
+    justify-content: end;
+    list-style-type: none;
+}
+.A{
+    text-decoration: none;
+    padding: 5px 20px 0 15px;
+    font-size: 14px !important;
+}
+
+
+
+

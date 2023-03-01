@@ -1,0 +1,22 @@
+
+h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 28px;
+    color: black !important;
+    padding-top: 15px;
+}
+#subtitulo{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: rgba(0, 0, 0, .5) !important;
+}
+.textAvatar{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-top: 7px;
+    line-height: 3px;
+    font-size: 11px;
+    color: rgba(0,0,0,.8);
+}
+#tituloSeccion{
+    color: 0,0,0, .6;
+}

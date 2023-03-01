@@ -1,0 +1,11 @@
+#cuerpoCard{
+    background-color: transparent !important;
+}
+#texto{
+    font-size: 22px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 25px;
+}
+section{
+    background-color: rgba(50,0,20,.03);
+}

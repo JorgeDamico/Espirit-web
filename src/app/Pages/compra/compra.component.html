@@ -1,0 +1,76 @@
+<section class="row mt-3 mb-3">
+    <div class="col-lg-6 offset-sm-3 col-10 offset-1 mx-auto" id="formu" *ngIf="conSinUserName == 'sin'">
+        <button class="btn btn-outline-primary" (click)="con()">Click si tenés usuario</button>
+        <p class="p_titulo text text-center pb-4">Complete los datos</p>
+        <form [formGroup]="myForm" (ngSubmit)="Registrar()">
+            <div class="mb-3" >
+                <label class="form-label" >Nombre</label>                    
+                <input type="text" class="form-control" formControlName="nombre" [(ngModel)]="value1">      
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellido</label>
+                <input type="text" class="form-control" formControlName="apellido" aria-describedby="emailHelp" [(ngModel)]="value2">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="correo" placeholder="Opcional">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Teléfono</label>
+                <input type="number" class="form-control" formControlName="telefono">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Dirección</label>
+                <input type="text" class="form-control" formControlName="direccion" aria-describedby="emailHelp">
+            </div>
+            <h3 id="usuario">Su usuario es: {{value1}}{{value2}}</h3>
+
+            <button id="btn_Enviar" type="submit" class="btn btn-outline-success" [disabled]="myForm.invalid">
+                Crear usuario
+            </button>
+    
+            <div id="err" *ngIf="myForm.get('nombre')?.errors && myForm.get('nombre')?.dirty">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                <p *ngIf="myForm.get('nombre')?.hasError('required')">No deje el nombre vacío</p>
+                <p *ngIf="myForm.get('nombre')?.hasError('minlength')">El nombre debe contener más de tres caracteres</p>
+            </div>
+            <div id="err" *ngIf="myForm.get('apellido')?.errors && myForm.get('apellido')?.dirty">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                <p *ngIf="myForm.get('apellido')?.hasError('required')">No deje el apellido vacío</p>
+                <p *ngIf="myForm.get('apellido')?.hasError('minlength')">El apellido debe contener más de tres caracteres</p>
+            </div>
+            <div id="err" *ngIf="myForm.get('direccion')?.errors && myForm.get('direccion')?.dirty">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                <p *ngIf="myForm.get('direccion')?.hasError('required')">No deje la dirección vacía</p>
+                <p *ngIf="myForm.get('direccion')?.hasError('minlength')">La dirección debe contener más de tres caracteres</p>
+            </div>
+    
+        </form>
+    </div>
+
+    <div class="col-lg-6 offset-sm-3 col-10 offset-1 mx-auto mt-3" *ngIf="conSinUserName == 'con'">
+        <form [formGroup]="myForm" (ngSubmit)="Registrar()">
+            <div class="mb-3" >
+                <label class="form-label" >Usuario</label>                    
+                <input type="text" class="form-control" value={{userName}}>      
+            </div>
+        </form>
+    </div>
+
+    <div class="col-lg-6 offset-sm-3 col-10 offset-1 mx-auto">
+        <ul class="list-group mt-3" *ngFor="let item of carritoActualizado">
+            <li class="list-group-item">{{item.nombre}} - {{item.cantidad}}ml {{item.precio | currency}}</li>
+        </ul>
+        <h3 class="text text-center text-success pt-2">Total: {{total | currency}}</h3>
+    </div>
+
+</section>

@@ -1,0 +1,25 @@
+.p_titulo{
+    border-bottom: 1px solid indigo;
+    padding-bottom: 10px;
+    font-size: 20px;
+}
+#formu{
+    border: 1px solid silver;
+}
+#cortar, #cortarTb{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#suscriptores{
+    border: 1px solid silver;
+    max-height: 500px; 
+}
+#scroller{
+    max-height: 350px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+a{
+    text-decoration: none;
+}
